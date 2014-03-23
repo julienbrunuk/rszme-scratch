@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>rsz.me - Resisze Me URL Shortener</title>
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+     $( document ).ready(function() {
+       var rszmeapi_post = 'http://127.0.0.1:3000/API/post/';
+       var pleaseshorten = '';
+$( "#resizemebutton" ).click(function() {
+  pleaseshorten = encodeURIComponent( $("#resizemeinput").val() );
+        $.ajax({
+            url: rszmeapi_post + pleaseshorten,
+            type: 'POST',
+            processData: false,
+            cache: false,
+            success: function(returnhtml){
+                alert(url);
+                $("#loadingimg").hide();
+            }
+        });
+});
+
+});
+    </script>
+  </head>
+  <body>
+    <input id="resizemeinput" type="text" value="http://google.com/" /><input id="resizemebutton" type="button" value="Resize me" />
+  </body>
+</html>
